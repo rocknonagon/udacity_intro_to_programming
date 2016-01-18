@@ -1,0 +1,55 @@
+* {
+	box-sizing: border-box;	
+	font-family: helvetica;
+}
+
+/* pattern adapted from http://lea.verou.me/css3patterns/ */
+body {
+	color: #666666;
+	background-image: 
+	radial-gradient(circle at 100% 150%, rgb(255, 240, 240) 24%, white 25%, white 28%, rgb(255, 240, 240) 29%, rgb(255, 240, 240) 36%, white 36%, white 40%, transparent 40%, transparent),
+	radial-gradient(circle at 0    150%, rgb(255, 240, 240) 24%, white 25%, white 28%, rgb(255, 240, 240) 29%, rgb(255, 240, 240) 36%, white 36%, white 40%, transparent 40%, transparent),
+	radial-gradient(circle at 50%  100%, white 10%, rgb(255, 240, 240) 11%, rgb(255, 240, 240) 23%, white 24%, white 30%, rgb(255, 240, 240) 31%, rgb(255, 240, 240) 43%, white 44%, white 50%, rgb(255, 240, 240) 51%, rgb(255, 240, 240) 63%, white 64%, white 71%, transparent 71%, transparent),
+	radial-gradient(circle at 100% 50%, white 5%, rgb(255, 240, 240) 6%, rgb(255, 240, 240) 15%, white 16%, white 20%, rgb(255, 240, 240) 21%, rgb(255, 240, 240) 30%, white 31%, white 35%, rgb(255, 240, 240) 36%, rgb(255, 240, 240) 45%, white 46%, white 49%, transparent 50%, transparent),
+	radial-gradient(circle at 0    50%, white 5%, rgb(255, 240, 240) 6%, rgb(255, 240, 240) 15%, white 16%, white 20%, rgb(255, 240, 240) 21%, rgb(255, 240, 240) 30%, white 31%, white 35%, rgb(255, 240, 240) 36%, rgb(255, 240, 240) 45%, white 46%, white 49%, transparent 50%, transparent);
+	background-size:200px 100px;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+section {
+	background-color: rgba(255,255,255,0.9);
+	margin: 2% 1%;
+	padding: 1em;
+	width: 48%;
+	border: #d5d 3px solid; 
+} 
+
+img {
+	max-width: 90%;
+	margin: 0% auto 0% 5%;
+}
+
+h1 {
+	width: 98%;
+	text-align: center;
+	padding: 0.5em;
+	background-color: rgba(180,64,180,0.5);
+}
+
+h2 {
+	padding: 0.5em;
+	background-color: rgba(221,85,221, 0.5);
+}
+
+p {
+	padding: 0.5em;
+}
+
+code {
+	color: #B440B4;
+}
+
