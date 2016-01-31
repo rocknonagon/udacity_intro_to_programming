@@ -27,12 +27,12 @@ def create_quiz(num_blanks=4):
     sonnet = read_sonnet()
     text = sonnet.get('text')
     quiz_lines = sorted(random.sample(range(len(text)), num_blanks))
-    for n in xrange(num_blanks):
-        split_line = [word for word in re.split('([ \.,;])', text[quiz_lines[n]]) if word != ""]
+    for n, quiz_line in enumerate(quiz_lines):
+        split_line = [word for word in re.split('([ \.,;])', text[quiz_line]) if word != ""]
         blank_position = random.choice([i for i in xrange(len(split_line)) if split_line[i].isalpha()])
         answer = split_line[blank_position]
         split_line[blank_position] = "___" + str(n + 1) + "___"
-        text[quiz_lines[n]] = "".join(split_line)
+        text[quiz_line] = "".join(split_line)
         quiz_answers.append(answer)
     return dict(title=sonnet.get('title'), text=text, answers=quiz_answers)
 
@@ -49,7 +49,7 @@ def play_game(difficulty_level=3):
     title = quiz.get('title')
     test_text = "".join(quiz.get('text'))
     answers = quiz.get('answers')
-    for blank in xrange(len(answers)):
+    for n, answer in enumerate(answers):
         number_of_hints = difficulty_level
         print "*******************************************"
         print title
@@ -57,22 +57,22 @@ def play_game(difficulty_level=3):
         print test_text
         print "*******************************************"
         while True:
-            response = raw_input("What should go in blank number {}?\n".format(blank + 1))
-            if response.lower().strip() == answers[blank].lower().strip():
+            response = raw_input("What should go in blank number {}?\n".format(n + 1))
+            if response.lower().strip() == answer.lower().strip():
                 print "Well done!"
-                test_text = test_text.replace("___" + str(blank + 1) + "___", answers[blank])
+                test_text = test_text.replace("___" + str(n + 1) + "___", answer)
                 break
             if number_of_hints == 3:
-                print "Hint: the word begins with {}.".format(answers[blank][0])
+                print "Hint: the word begins with {}.".format(answer[0])
             if number_of_hints == 2:
-                print "Hint: the word is {} letters long.".format(len(answers[blank]))
+                print "Hint: the word is {} letters long.".format(len(answer))
             if number_of_hints == 1:
-                print "Hint: the word ends with {}.".format(answers[blank][-1])
+                print "Hint: the word ends with {}.".format(answer[-1])
             if number_of_hints == 0:
                 want_to_quit = raw_input("Would you like to give up?")
                 if want_to_quit.lower().startswith("y"):
-                    print "The word is {}.".format(answers[blank])
-                    test_text = test_text.replace("___" + str(blank + 1) + "___", answers[blank])
+                    print "The word is {}.".format(answer)
+                    test_text = test_text.replace("___" + str(n + 1) + "___", answer)
                     break
             number_of_hints -= 1
 
